@@ -1,0 +1,458 @@
+/* src/styles/PopulationBreakdown.css */
+
+.population-breakdown {
+  margin: 40px 0;
+  background: linear-gradient(135deg, #f8fffe 0%, #f0f9ff 100%);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.population-breakdown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #4568dc, #b06ab3, #667eea);
+  border-radius: 25px 25px 0 0;
+}
+
+.breakdown-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.breakdown-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.title-icon {
+  font-size: 2rem;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.breakdown-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.breakdown-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.breakdown-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.breakdown-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.card-header {
+  margin-bottom: 25px;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-icon {
+  font-size: 1.6rem;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.1));
+}
+
+/* 年龄分布样式 */
+.age-chart {
+  margin-bottom: 20px;
+}
+
+.age-item {
+  margin-bottom: 20px;
+}
+
+.age-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.age-range {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+.age-stats {
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.age-bar {
+  height: 12px;
+  background-color: #f7fafc;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.age-progress {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease;
+  position: relative;
+}
+
+.age-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.2) 75%);
+  background-size: 20px 20px;
+  animation: progress-animation 2s linear infinite;
+}
+
+@keyframes progress-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 0;
+  }
+}
+
+.age-insights, .gender-insights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.insight-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7fafc;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.insight-icon {
+  font-size: 1.1rem;
+}
+
+/* 性别分布样式 */
+.gender-chart {
+  display: flex;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.gender-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.gender-segment:hover {
+  filter: brightness(1.1);
+}
+
+.gender-info {
+  text-align: center;
+}
+
+.gender-type {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.gender-stats {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.gender-population {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* 教育分布样式 */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.education-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.education-item:hover {
+  background: #edf2f7;
+  transform: translateY(-5px);
+}
+
+.education-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+}
+
+.education-content {
+  margin-bottom: 15px;
+}
+
+.education-level {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.education-percentage {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-background {
+  stroke: #e2e8f0;
+}
+
+.progress-ring-progress {
+  stroke: #667eea;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1s ease;
+}
+
+/* 人口密度样式 */
+.density-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.density-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.density-stat {
+  padding: 15px;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 3px;
+}
+
+.stat-desc {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+.density-visualization {
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  align-items: end;
+}
+
+.density-bar {
+  flex: 1;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+}
+
+.density-bar.high {
+  height: 100%;
+  background: linear-gradient(to top, #FF6B6B, #ff8a80);
+}
+
+.density-bar.medium {
+  height: 75%;
+  background: linear-gradient(to top, #4ECDC4, #80cbc4);
+}
+
+.density-bar.low {
+  height: 50%;
+  background: linear-gradient(to top, #45B7D1, #81c784);
+}
+
+.density-bar.very-low {
+  height: 25%;
+  background: linear-gradient(to top, #96CEB4, #c5e1a5);
+}
+
+.density-bar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 底部洞察 */
+.breakdown-footer {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  margin: -40px -40px -40px -40px;
+  padding: 30px 40px;
+  color: white;
+  border-radius: 0 0 25px 25px;
+}
+
+.footer-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.insight-emoji {
+  font-size: 2rem;
+  flex-shrink: 0;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+.insight-content {
+  line-height: 1.6;
+}
+
+.insight-content strong {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .population-breakdown {
+    padding: 25px;
+    margin: 20px 0;
+  }
+  
+  .breakdown-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .breakdown-title {
+    font-size: 1.8rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .density-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .footer-insights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .breakdown-card {
+    padding: 20px;
+  }
+  
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .gender-chart {
+    height: 60px;
+  }
+  
+  .gender-info {
+    font-size: 0.9rem;
+  }
+}

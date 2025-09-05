@@ -6,6 +6,53 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+.population-breakdown {
+  margin: 32px 0 0 0;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f3f6ff 100%);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(102,126,234,0.07);
+  border: 1px solid #e9ecef;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.population-breakdown h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.breakdown-content {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.breakdown-content p {
+  margin: 0 0 10px 0;
+  padding-left: 8px;
+  position: relative;
+}
+
+.breakdown-content p::before {
+  content: '\2022';
+  color: #764ba2;
+  font-size: 1.1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.breakdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+
 .stats-overview h3 {
   margin-top: 0;
   margin-bottom: 20px;
