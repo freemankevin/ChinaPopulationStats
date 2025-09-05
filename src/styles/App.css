@@ -8,15 +8,32 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4568dc 0%, #b06ab3 100%);
   min-height: 100vh;
   line-height: 1.6;
   color: #333;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4568dc 0%, #b06ab3 100%);
+  position: relative;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.05)"/><circle cx="30" cy="40" r="3" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="20" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="70" cy="70" r="4" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="30" r="2.5" fill="rgba(255,255,255,0.05)"/></svg>');
+  background-size: 300px 300px;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .content {
@@ -27,6 +44,9 @@ body {
   box-shadow: 0 25px 50px rgba(0,0,0,0.15);
   backdrop-filter: blur(10px);
   padding: 40px;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.8s ease-out;
 }
 
 /* 滚动条美化 */
@@ -103,6 +123,20 @@ body {
   padding: 30px;
   margin-bottom: 30px;
   transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #4568dc, #b06ab3);
+  opacity: 0.8;
 }
 
 .card:hover {
@@ -151,6 +185,15 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -163,88 +206,126 @@ body {
   }
 }
 
-@keyframes shimmer {
+@keyframes float {
   0% {
-    transform: translateX(-100%);
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateY(0px);
   }
 }
 
-.animate-fadeInUp {
-  animation: fadeInUp 0.6s ease forwards;
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }
 
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
+/* 添加悬浮动画到统计卡片 */
+.stats-card {
+  animation: float 6s ease-in-out infinite;
 }
 
-/* 加载状态 */
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  font-size: 18px;
-  color: #666;
+/* 改进按钮样式 */
+.btn.primary {
+  background: linear-gradient(45deg, #4568dc, #b06ab3);
+  box-shadow: 0 8px 20px rgba(69, 104, 220, 0.4);
 }
 
-.loading::before {
-  content: '';
-  width: 40px;
-  height: 40px;
-  margin-right: 15px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #667eea;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+.btn.secondary {
+  background: linear-gradient(45deg, #36d1dc, #5b86e5);
+  box-shadow: 0 8px 20px rgba(54, 209, 220, 0.4);
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.btn.danger {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
 }
 
-/* 工具提示 */
-.tooltip {
-  position: relative;
-  cursor: pointer;
+/* 添加页面过渡效果 */
+.page-transition {
+  animation: fadeInUp 0.8s ease-out;
 }
 
-.tooltip::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
+/* 改进表格样式 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  font-size: 0.9em;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+th {
+  background: linear-gradient(45deg, #4568dc, #b06ab3);
   color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 1000;
+  text-align: left;
+  font-weight: bold;
+  padding: 15px;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.tooltip::before {
-  content: '';
-  position: absolute;
-  bottom: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+td {
+  padding: 15px;
+  border-bottom: 1px solid #f2f2f2;
+  color: #333;
 }
 
-.tooltip:hover::after,
-.tooltip:hover::before {
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #f1f4ff;
+}
+
+/* 输入框样式 */
+input, textarea, select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  color: #333;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+  background-color: #fff;
+}
+
+::placeholder {
+  color: #aaa;
   opacity: 1;
-  visibility: visible;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
 }

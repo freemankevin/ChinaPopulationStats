@@ -133,6 +133,18 @@ const FilterSection = ({ filters, onFilterChange, cities }) => {
           <span className="btn-icon">🌸</span>
           江苏省
         </button>
+        <button 
+          className="clear-filters-btn"
+          onClick={() => {
+            onFilterChange('population', 'all');
+            onFilterChange('province', 'all');
+            onFilterChange('tier', 'all');
+            onFilterChange('limit', '50');
+          }}
+        >
+          <span className="btn-icon">🗑️</span>
+          清除筛选
+        </button>
       </div>
     </div>
   );

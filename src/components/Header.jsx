@@ -14,7 +14,7 @@ const Header = () => {
           <div className="decoration-line"></div>
         </div>
       </div>
-      <div className="header-bg-pattern"></div>
+
     </div>
   );
 };

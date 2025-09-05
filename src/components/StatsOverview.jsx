@@ -63,16 +63,9 @@ const StatsOverview = ({ stats }) => {
             className="stat-card"
             style={{ background: stat.color }}
           >
-            <div className="stat-icon">{stat.icon}</div>
-            <div className="stat-content">
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
-            <div className="stat-decoration">
-              <div className="decoration-dot"></div>
-              <div className="decoration-dot"></div>
-              <div className="decoration-dot"></div>
-            </div>
+            <span className="stat-icon">{stat.icon}</span>
+            <div className="stat-value">{stat.number}</div>
+            <div className="stat-label">{stat.label}</div>
           </div>
         ))}
       </div>
