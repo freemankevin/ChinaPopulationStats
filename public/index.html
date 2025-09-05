@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="中国全国人口规模统计可视化平台，展示城市人口和农村人口数据分析" />
+  <meta name="keywords" content="中国人口,人口统计,数据可视化,城市人口,农村人口" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="中国全国人口规模统计" />
+  <meta property="og:description" content="专业的中国人口数据可视化平台" />
+  <meta property="og:type" content="website" />
+  
+  <!-- 预加载关键资源 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 添加一些基础的全局样式 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+    
+    /* 加载动画 */
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      color: white;
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+  
+  <title>中国全国人口规模统计</title>
+</head>
+<body>
+  <noscript>
+    <div style="text-align: center; padding: 50px; font-size: 18px; color: #666;">
+      您需要启用 JavaScript 来运行此应用程序。
+    </div>
+  </noscript>
+  
+  <!-- 应用根容器 -->
+  <div id="root">
+    <!-- 加载时显示的内容 -->
+    <div class="loading-container">
+      <div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">加载中国人口统计数据...</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 全局脚本 -->
+  <script>
+    // 添加一些全局配置
+    window.APP_CONFIG = {
+      version: '1.0.0',
+      buildTime: new Date().toISOString(),
+      theme: 'modern'
+    };
+    
+    // 简单的错误处理
+    window.addEventListener('error', function(e) {
+      console.error('应用发生错误:', e.error);
+    });
+    
+    // 性能监控
+    window.addEventListener('load', function() {
+      const loadTime = performance.now();
+      console.log(`页面加载完成，耗时: ${Math.round(loadTime)}ms`);
+    });
+  </script>
+</body>
+</html>

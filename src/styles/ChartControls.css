@@ -1,0 +1,38 @@
+.chart-controls {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-controls h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.chart-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.chart-button {
+  padding: 8px 16px;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chart-button:hover {
+  background-color: #dee2e6;
+}
+
+.chart-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
