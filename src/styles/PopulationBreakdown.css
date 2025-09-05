@@ -1,4 +1,4 @@
-/* src/styles/PopulationBreakdown.css */
+/* src/styles/PopulationBreakdown.css - 修复版本 */
 
 .population-breakdown {
   margin: 40px 0;
@@ -24,7 +24,7 @@
 
 .breakdown-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .breakdown-title {
@@ -53,9 +53,10 @@
 
 .breakdown-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   margin-bottom: 40px;
+  align-items: start;
 }
 
 .breakdown-card {
@@ -67,6 +68,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  height: fit-content;
 }
 
 .breakdown-card::after {
@@ -103,6 +105,10 @@
 }
 
 /* 年龄分布样式 */
+.age-distribution {
+  grid-column: 1;
+}
+
 .age-chart {
   margin-bottom: 20px;
 }
@@ -169,7 +175,7 @@
 .age-insights, .gender-insights {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -189,9 +195,13 @@
 }
 
 /* 性别分布样式 */
+.gender-distribution {
+  grid-column: 2;
+}
+
 .gender-chart {
   display: flex;
-  height: 80px;
+  height: 120px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -232,9 +242,13 @@
 }
 
 /* 教育分布样式 */
+.education-distribution {
+  grid-column: 1 / -1;
+}
+
 .education-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
@@ -243,7 +257,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 25px 20px;
   background: #f7fafc;
   border-radius: 15px;
   transition: all 0.3s ease;
@@ -257,7 +271,7 @@
 
 .education-icon {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
 }
 
@@ -268,11 +282,12 @@
 .education-level {
   font-weight: 600;
   color: #2d3748;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
 }
 
 .education-percentage {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #667eea;
 }
@@ -292,52 +307,65 @@
 }
 
 /* 人口密度样式 */
+.density-analysis {
+  grid-column: 1 / -1;
+}
+
 .density-content {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
 }
 
 .density-stats {
   display: flex;
   justify-content: space-around;
   text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .density-stat {
-  padding: 15px;
+  padding: 20px;
+  flex: 1;
+  min-width: 140px;
 }
 
 .stat-number {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #667eea;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .stat-label {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #2d3748;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .stat-desc {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #718096;
 }
 
 .density-visualization {
   display: flex;
-  gap: 8px;
-  height: 40px;
+  gap: 10px;
+  height: 60px;
   align-items: end;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .density-bar {
   flex: 1;
+  min-width: 60px;
   border-radius: 8px 8px 0 0;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .density-bar.high {
@@ -368,21 +396,21 @@
 /* 底部洞察 */
 .breakdown-footer {
   background: linear-gradient(135deg, #667eea, #764ba2);
-  margin: -40px -40px -40px -40px;
-  padding: 30px 40px;
+  margin: 40px -40px -40px -40px;
+  padding: 35px 40px;
   color: white;
   border-radius: 0 0 25px 25px;
 }
 
 .footer-insights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
 }
 
 .insight-card {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.2);
@@ -392,22 +420,34 @@
 }
 
 .insight-emoji {
-  font-size: 2rem;
+  font-size: 2.2rem;
   flex-shrink: 0;
   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
 }
 
 .insight-content {
   line-height: 1.6;
+  font-size: 1rem;
 }
 
 .insight-content strong {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .density-stats {
+    justify-content: space-between;
+  }
+}
+
 @media (max-width: 768px) {
   .population-breakdown {
     padding: 25px;
@@ -416,7 +456,34 @@
   
   .breakdown-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-rows: auto auto auto auto;
+  }
+  
+  .age-distribution,
+  .gender-distribution,
+  .education-distribution,
+  .density-analysis {
+    grid-column: 1;
+  }
+  
+  .age-distribution {
+    grid-row: 1;
+  }
+  
+  .gender-distribution {
+    grid-row: 2;
+  }
+  
+  .education-distribution {
+    grid-row: 3;
+  }
+  
+  .density-analysis {
+    grid-row: 4;
+  }
+  
+  .breakdown-card {
+    min-height: auto;
   }
   
   .breakdown-title {
@@ -427,15 +494,31 @@
   
   .education-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
   
   .density-stats {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .density-stat {
+    min-width: auto;
   }
   
   .footer-insights {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .insight-card {
+    padding: 20px;
+  }
+  
+  .breakdown-footer {
+    padding: 30px 25px;
+    margin: 40px -25px -25px -25px;
   }
 }
 
@@ -446,13 +529,26 @@
   
   .education-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
   .gender-chart {
-    height: 60px;
+    height: 80px;
   }
   
   .gender-info {
     font-size: 0.9rem;
+  }
+  
+  .density-visualization {
+    height: 40px;
+  }
+  
+  .stat-number {
+    font-size: 1.6rem;
+  }
+  
+  .insight-emoji {
+    font-size: 1.8rem;
   }
 }
